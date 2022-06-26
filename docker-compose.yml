@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  title-summary-service:
+    container_name: title-summary-service
+    image: ${IMAGE}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "title-summary-service:/src/resources/"
+    deploy:
+      resources:
+        limits:
+          memory: ${MEMORY}
+    ports:
+      - ${EXPOSED_PORT}:5001
+    command: bash -c "gunicorn --capture-output --enable-stdio-inheritance -w 1 --threads 20 -b 0.0.0.0:5001 app:app --timeout 1000"
+    networks:
+      - shared_network
+    restart: always
+
+volumes:
+  title-summary-service:
+
+networks:
+  shared_network:
+    external:
+      name: shared_network

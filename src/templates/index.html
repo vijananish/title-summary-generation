@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div>
+		<h1>Title and Summary Generation</h1>
+			<form action="http://localhost:5001/predict" method="POST">
+			<p>	<label class="label"><b>Description:</b></label></p>
+				<textarea id="description" name="description" class="input-box" placeholder="Place your text..." rows="40" cols="50"></textarea>
+				<!-- <input type="text" id="description" name="description" class="input-box" placeholder="Place your text..."> -->
+				<button class="button-85" role="button" onclick="$('#loading').show();">Predict Title-Summary</button>
+			</form>
+			<div class="loading" id="loading" style="display:none;"><img src="" alt="" />Loading Please Wait !!!!!!</div>
+		<div class ="bottom">
+			<p>
+				<span class ='title'>Title<span> <span class="info">: {{title_text}}</span>
+				<br><br>
+				<span class ='title'>Summary</span> <span class="info">: {{summary_text}}</span>
+        	</p>
+		</div>
+    </div>
+</body>
+</html>
